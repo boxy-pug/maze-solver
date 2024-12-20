@@ -71,6 +71,19 @@ class Cell():
         if self.has_bottom_wall:
             self._win.draw_line(Line(Point(x1, y2), Point(x2, y2)))
 
+    def draw_move(self, to_cell, undo=False):
+        fill = "gray"
+        if not undo:
+            self.fill = "red"
+
+        from_x = (self._x1 + self._x2) / 2
+        from_y = (self._y1 + self._y2) / 2
+
+        to_x = (to_cell._x1 + to_cell._x2) / 2
+        to_y = (to_cell._y1 + to_cell._y2) / 2
+
+        self._win.draw_line(Line(Point(from_x, from_y), Point(to_x, to_y)), fill)
+
       
 
 def main():
@@ -94,6 +107,12 @@ def main():
     c4 = Cell(win)
     c4.has_top_wall = False
     c4.draw(300, 300, 500, 500)
+
+    # Draw a move from cell1 to cell2
+    c1.draw_move(c2, undo=False)
+
+    # Draw a backtrack move from cell2 to cell1
+    c2.draw_move(c1, undo=True)
 
 
 
