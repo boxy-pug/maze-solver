@@ -47,7 +47,7 @@ class Line():
         canvas.create_line(x1, y1, x2, y2, fill=fill_color, width=2)
 
 class Cell():
-    def __init__(self, window):
+    def __init__(self, window=None):
         self.has_left_wall = True
         self.has_right_wall = True
         self.has_top_wall = True
@@ -86,14 +86,14 @@ class Cell():
         self._win.draw_line(Line(Point(from_x, from_y), Point(to_x, to_y)), fill)
 
 class Maze():
-    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win):
+    def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, window=None):
         self.x1 = x1
         self.y1 = y1
         self.num_rows = num_rows
         self.num_cols = num_cols
         self.cell_size_x = cell_size_x
         self.cell_size_y = cell_size_y
-        self.win = win
+        self.win = window
         self._create_cells()
 
     def _create_cells(self):
@@ -125,7 +125,7 @@ class Maze():
 
 def main():
     win = Window(800, 600)
-
+    """
     maze = Maze(50, 50, 5, 5, 50, 50, win)
 
     l = Line(Point(50, 50), Point(100, 100))
@@ -152,7 +152,7 @@ def main():
 
     # Draw a backtrack move from cell2 to cell1
     c2.draw_move(c1, undo=True)
-
+    """
 
 
     win.wait_for_close()
